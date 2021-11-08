@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "cms-frontend": "apps/cms-frontend",
+    "cms-frontend-e2e": "apps/cms-frontend-e2e"
+  }
+}
