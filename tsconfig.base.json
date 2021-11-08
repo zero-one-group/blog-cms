@@ -17,7 +17,8 @@
     "paths": {
       "@cms-blog/cmslib-frontend/feature-login": [
         "libs/cmslib-frontend/feature-login/src/index.ts"
-      ]
+      ],
+      "@cms-blog/cmslib-frontend/ui": ["libs/cmslib-frontend/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
