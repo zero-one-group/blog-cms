@@ -2,12 +2,9 @@ import {
   FormControl,
   FormLabel,
   Input,
-  FormErrorMessage
-} from '@chakra-ui/react'
-import {
-  FieldHookConfig,
-  useField
-} from 'formik'
+  FormErrorMessage,
+} from '@chakra-ui/react';
+import { FieldHookConfig, useField } from 'formik';
 
 /* eslint-disable-next-line */
 export interface InputFieldProps {
@@ -20,7 +17,7 @@ export function InputField(props: InputFieldProps & FieldHookConfig<string>) {
   return (
     <FormControl>
       <FormLabel>{props.label}</FormLabel>
-      <Input {...field} type={props.type}/>
+      <Input {...field} type={props.type} />
       {meta.touched && meta.error ? (
         <FormErrorMessage fontSize="xs">{meta.error}</FormErrorMessage>
       ) : null}
