@@ -1,17 +1,27 @@
-import styled from 'styled-components';
+import {
+  Button
+} from '@chakra-ui/react';
+
 
 /* eslint-disable-next-line */
-export interface SubmitButtonProps {}
+export interface SubmitButtonProps {
+  buttonLabel: string;
+  form?: string;
+}
 
-const StyledSubmitButton = styled.div`
-  color: pink;
-`;
 
 export function SubmitButton(props: SubmitButtonProps) {
   return (
-    <StyledSubmitButton>
-      <h1>Welcome to SubmitButton!</h1>
-    </StyledSubmitButton>
+    <Button
+      type="submit"
+      colorScheme="cyan"
+      size="lg"
+      fontSize="md"
+      data-cy="login"
+      form={props.form}
+    >
+      {props.buttonLabel}
+    </Button>
   );
 }
 
