@@ -33,17 +33,9 @@ export const PasswordField = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <FormControl id="password">
+      <FormControl id="password" my="2">
         <Flex justify="space-between">
-          <FormLabel> Password </FormLabel>
-          <Box
-            as="a"
-            color={mode('blue.400', 'blue.200')}
-            fontWeight="semibold"
-            fontSize="sm"
-          >
-            Forgot Password?
-          </Box>
+          <FormLabel>Password </FormLabel>
         </Flex>
         <InputGroup>
           <InputRightElement>

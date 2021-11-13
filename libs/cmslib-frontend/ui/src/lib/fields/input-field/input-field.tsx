@@ -13,7 +13,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
     const mergeRef = useMergeRefs(inputRef, ref);
 
     return (
-      <FormControl>
+      <FormControl my="2">
         <FormLabel>{props.label}</FormLabel>
         <Input
           ref={mergeRef}

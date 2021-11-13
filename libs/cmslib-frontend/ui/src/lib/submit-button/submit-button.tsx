@@ -9,12 +9,14 @@ export interface SubmitButtonProps {
 export function SubmitButton(props: SubmitButtonProps) {
   return (
     <Button
+      my="3"
       type="submit"
       colorScheme="cyan"
       size="lg"
       fontSize="md"
       data-cy="login"
       form={props.form}
+      minW="full"
     >
       {props.buttonLabel}
     </Button>

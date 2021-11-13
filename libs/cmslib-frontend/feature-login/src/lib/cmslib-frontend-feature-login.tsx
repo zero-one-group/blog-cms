@@ -4,6 +4,7 @@ import {
   PasswordField,
   SubmitButton,
 } from '@cms-blog/cmslib-frontend/ui';
+import { Box, useColorModeValue, Heading } from '@chakra-ui/react';
 
 /* eslint-disable-next-line */
 export interface CmslibFrontendFeatureLoginProps {}
@@ -19,13 +20,35 @@ export function CmslibFrontendFeatureLogin(
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <InputField
-        {...register('username', { required: 'please input your username' })}
-        type="string"
-        label="haha"
-      />
-      <PasswordField {...register('password')} />
-      <SubmitButton buttonLabel="Submit" />
+      <Box
+        bg={useColorModeValue('gray.50', 'inherit')}
+        minH="100vh"
+        py="12"
+        px={{ base: '4', lg: '8' }}
+      >
+        <Box maxW="md" mx="auto">
+          <Heading mb="9" textAlign="center" size="xl" fontWeight="extrabold">
+            Blog-CMS
+          </Heading>
+          <Box
+            bg={useColorModeValue('white', 'gray.700')}
+            py="8"
+            px={{ base: '4', md: '10' }}
+            shadow="base"
+            rounded={{ sm: 'lg' }}
+          >
+            <InputField
+              {...register('username', {
+                required: 'please input your username',
+              })}
+              type="string"
+              label="Username"
+            />
+            <PasswordField {...register('password')} />
+            <SubmitButton buttonLabel="Login" />
+          </Box>
+        </Box>
+      </Box>
     </form>
   );
 }
