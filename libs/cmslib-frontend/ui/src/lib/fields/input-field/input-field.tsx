@@ -1,10 +1,5 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-} from '@chakra-ui/react';
-import { FieldHookConfig, useField } from 'formik';
+import { Input, FormLabel, FormControl, useMergeRefs } from '@chakra-ui/react';
+import * as React from 'react';
 
 /* eslint-disable-next-line */
 export interface InputFieldProps {
@@ -12,17 +7,23 @@ export interface InputFieldProps {
   type: string;
 }
 
-export function InputField(props: InputFieldProps & FieldHookConfig<string>) {
-  const [field, meta] = useField(props);
-  return (
-    <FormControl>
-      <FormLabel>{props.label}</FormLabel>
-      <Input {...field} type={props.type} />
-      {meta.touched && meta.error ? (
-        <FormErrorMessage fontSize="xs">{meta.error}</FormErrorMessage>
-      ) : null}
-    </FormControl>
-  );
-}
+export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
+  (props, ref) => {
+    const inputRef = React.useRef<HTMLInputElement>(null);
+    const mergeRef = useMergeRefs(inputRef, ref);
+
+    return (
+      <FormControl>
+        <FormLabel>{props.label}</FormLabel>
+        <Input
+          ref={mergeRef}
+          autoComplete="current-password"
+          required
+          {...props}
+        />
+      </FormControl>
+    );
+  }
+);
 
 export default InputField;

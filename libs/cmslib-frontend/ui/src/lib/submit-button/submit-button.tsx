@@ -1,14 +1,10 @@
-import {
-  Button
-} from '@chakra-ui/react';
-
+import { Button } from '@chakra-ui/react';
 
 /* eslint-disable-next-line */
 export interface SubmitButtonProps {
   buttonLabel: string;
   form?: string;
 }
-
 
 export function SubmitButton(props: SubmitButtonProps) {
   return (

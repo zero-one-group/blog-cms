@@ -1,19 +1,32 @@
-import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import {
+  InputField,
+  PasswordField,
+  SubmitButton,
+} from '@cms-blog/cmslib-frontend/ui';
 
 /* eslint-disable-next-line */
 export interface CmslibFrontendFeatureLoginProps {}
 
-const StyledCmslibFrontendFeatureLogin = styled.div`
-  color: pink;
-`;
-
 export function CmslibFrontendFeatureLogin(
   props: CmslibFrontendFeatureLoginProps
 ) {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (formData: unknown) => {
+    console.log(formData);
+  };
+
   return (
-    <StyledCmslibFrontendFeatureLogin>
-      <h1>Welcome to CmslibFrontendFeatureLogin!</h1>
-    </StyledCmslibFrontendFeatureLogin>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <InputField
+        {...register('username', { required: 'please input your username' })}
+        type="string"
+        label="haha"
+      />
+      <PasswordField {...register('password')} />
+      <SubmitButton buttonLabel="Submit" />
+    </form>
   );
 }
 
