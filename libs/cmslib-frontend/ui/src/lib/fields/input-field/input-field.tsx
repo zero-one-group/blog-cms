@@ -14,7 +14,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
 
     return (
       <FormControl my="2">
-        <FormLabel>{props.label}</FormLabel>
+        <FormLabel data-testid="field-title">{props.label}</FormLabel>
         <Input
           ref={mergeRef}
           autoComplete="current-password"

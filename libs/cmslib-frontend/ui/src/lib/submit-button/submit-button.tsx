@@ -17,6 +17,7 @@ export function SubmitButton(props: SubmitButtonProps) {
       data-cy="login"
       form={props.form}
       minW="full"
+      data-testid="button-label"
     >
       {props.buttonLabel}
     </Button>
