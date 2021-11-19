@@ -1,0 +1,72 @@
+{
+  "root": "apps/cms-frontend",
+  "sourceRoot": "apps/cms-frontend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/cms-frontend",
+        "index": "apps/cms-frontend/src/index.html",
+        "baseHref": "/",
+        "main": "apps/cms-frontend/src/main.tsx",
+        "polyfills": "apps/cms-frontend/src/polyfills.ts",
+        "tsConfig": "apps/cms-frontend/tsconfig.app.json",
+        "assets": [
+          "apps/cms-frontend/src/favicon.ico",
+          "apps/cms-frontend/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/cms-frontend/src/environments/environment.ts",
+              "with": "apps/cms-frontend/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "cms-frontend:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "cms-frontend:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/cms-frontend/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/cms-frontend"],
+      "options": {
+        "jestConfig": "apps/cms-frontend/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
