@@ -5,6 +5,7 @@ import {
   SubmitButton,
 } from '@cms-blog/cmslib-frontend/ui';
 import { Box, useColorModeValue, Heading } from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface CmslibFrontendFeatureLoginProps {}
@@ -13,9 +14,10 @@ export function CmslibFrontendFeatureLogin(
   props: CmslibFrontendFeatureLoginProps
 ) {
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   const onSubmit = async (formData: unknown) => {
-    console.log(formData);
+    history.push('/home');
   };
 
   return (
