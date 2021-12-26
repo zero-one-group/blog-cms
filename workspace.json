@@ -3,6 +3,7 @@
   "projects": {
     "cms-frontend": "apps/cms-frontend",
     "cms-frontend-e2e": "apps/cms-frontend-e2e",
+    "cmslib-frontend-feature-dashboard": "libs/cmslib-frontend/feature-dashboard",
     "cmslib-frontend-feature-login": "libs/cmslib-frontend/feature-login",
     "cmslib-frontend-ui": "libs/cmslib-frontend/ui"
   }
