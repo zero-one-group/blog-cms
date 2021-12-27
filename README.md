@@ -28,8 +28,9 @@ Execute `nx serve cms-frontend` for running cms-frontend project. Navigate to ht
 
 Run `nx g @nrwl/react:component <your-component-name> --project=<app-name>` to generate a new component.
 example:
+
 ```
-yarn nx g @nrwl/react:component password-field --project=cmslib-frontend-ui --dir=lib/fields  
+yarn nx g @nrwl/react:component password-field --project=cmslib-frontend-ui --dir=lib/fields
 ```
 
 ## Build

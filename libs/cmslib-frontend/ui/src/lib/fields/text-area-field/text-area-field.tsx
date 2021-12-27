@@ -1,18 +1,29 @@
-import styled from 'styled-components';
+import {
+  Textarea,
+  FormLabel,
+  FormControl,
+  useMergeRefs,
+} from '@chakra-ui/react';
+import * as React from 'react';
 
 /* eslint-disable-next-line */
-export interface TextAreaFieldProps {}
-
-const StyledTextAreaField = styled.div`
-  color: pink;
-`;
-
-export function TextAreaField(props: TextAreaFieldProps) {
-  return (
-    <StyledTextAreaField>
-      <h1>Welcome to TextAreaField!</h1>
-    </StyledTextAreaField>
-  );
+export interface TextAreaFieldProps {
+  label: string;
+  type: string;
 }
+
+export const TextAreaField = React.forwardRef<
+  HTMLTextAreaElement,
+  TextAreaFieldProps
+>((props, ref) => {
+  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
+  const mergeRef = useMergeRefs(textAreaRef, ref);
+  return (
+    <FormControl>
+      <FormLabel data-testid="field-title">{props.label}</FormLabel>
+      <Textarea ref={mergeRef} required {...props} />
+    </FormControl>
+  );
+});
 
 export default TextAreaField;
