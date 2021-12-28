@@ -17,7 +17,7 @@ export function App() {
         )}
       />
       <Route path="/login" component={CmslibFrontendFeatureLogin} />
-      <Route path="/home" component={CmslibFrontendFeatureDashboard} />
+      <Route path="/:menu" component={CmslibFrontendFeatureDashboard} />
     </ChakraProvider>
   );
 }

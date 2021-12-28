@@ -14,7 +14,7 @@ export function Navbar(props: NavbarProps) {
       p="4"
       zIndex="100"
     >
-      <h1 style={{ color: 'white' }}>CMS - Blog</h1>
+      <a style={{ color: 'white' }} href="/content-management-form">CMS - Blog</a>
     </Flex>
   );
 }
