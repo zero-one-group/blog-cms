@@ -9,7 +9,8 @@ import * as React from 'react';
 /* eslint-disable-next-line */
 export interface TextAreaFieldProps {
   label: string;
-  type: string;
+  bg?: string;
+  maxWidth?: string;
 }
 
 export const TextAreaField = React.forwardRef<
@@ -21,7 +22,13 @@ export const TextAreaField = React.forwardRef<
   return (
     <FormControl>
       <FormLabel data-testid="field-title">{props.label}</FormLabel>
-      <Textarea ref={mergeRef} required {...props} />
+      <Textarea
+        maxWidth={props.maxWidth ? props.maxWidth : '50rem'}
+        bg={props.bg ? props.bg : 'white'}
+        ref={mergeRef}
+        required
+        {...props}
+      />
     </FormControl>
   );
 });
