@@ -26,8 +26,12 @@ export function CmslibFrontendFeatureDashboard(
       minHeight="100vh"
     >
       <Navbar />
-      <Route path='/home' exact render={()=><Home/>}/>
-      <Route path='/content-management-form' exact render={()=><ContentManagementForm/>}/>
+      <Route path="/home" exact render={() => <Home />} />
+      <Route
+        path="/content-management-form"
+        exact
+        render={() => <ContentManagementForm />}
+      />
     </Stack>
   );
 }

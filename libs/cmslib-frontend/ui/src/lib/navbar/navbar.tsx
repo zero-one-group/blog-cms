@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Spacer } from '@chakra-ui/react';
 import styled from 'styled-components';
 
 /* eslint-disable-next-line */
@@ -14,7 +14,13 @@ export function Navbar(props: NavbarProps) {
       p="4"
       zIndex="100"
     >
-      <a style={{ color: 'white' }} href="/content-management-form">CMS - Blog</a>
+      <a style={{ color: 'white' }} href="/content-management-form">
+        CMS - Blog
+      </a>
+      <Spacer/>
+      <a style={{ color: 'white' }} href="/home">
+        Logout
+      </a>
     </Flex>
   );
 }
