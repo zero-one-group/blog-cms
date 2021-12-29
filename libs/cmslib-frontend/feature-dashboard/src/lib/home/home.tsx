@@ -32,32 +32,51 @@ export function Home(props: HomeProps) {
         <Heading as="h3" size="lg" mb="3">
           Dashboard
         </Heading>
-        <Heading as="h5" size="md" mt="16">
-          Choose Your Project:
-        </Heading>
-        <Grid templateColumns="repeat(4, 1fr)" gap={16} mt="8">
-          {dashboardData.map((data, index) => {
-            return (
+        {dashboardData.length > 0 ? (
+          <>
+            <Heading as="h5" size="md" mt="16">
+              Choose Your Project:
+            </Heading>
+            <Grid templateColumns="repeat(4, 1fr)" gap={16} mt="8">
+              {dashboardData.map((data, index) => {
+                return (
+                  <Card
+                    key={index}
+                    title={data.title}
+                    subtitle={data.subtitle}
+                    text={data.text}
+                    href="/content-management-form"
+                  />
+                );
+              })}
+            </Grid>
+            <Heading as="h5" size="md" mt="28">
+              Or Just Create New One!
+            </Heading>
+            <Grid templateColumns="repeat(5, 1fr)" gap={16} mt="8">
               <Card
-                title={data.title}
-                subtitle={data.subtitle}
-                text={data.text}
+                title="Create New Project"
+                subtitle="+"
                 href="/content-management-form"
+                bg="green.300"
               />
-            );
-          })}
-        </Grid>
-        <Heading as="h5" size="md" mt="28">
-          Or Just Create New One!
-        </Heading>
-        <Grid templateColumns="repeat(5, 1fr)" gap={16} mt="8">
-          <Card
-            title="Create New Project"
-            subtitle="+"
-            href="/content-management-form"
-            bg="green.300"
-          />
-        </Grid>
+            </Grid>
+          </>
+        ) : (
+          <>
+            <Heading as="h5" size="md" mt="16">
+              Create Your First Project!
+            </Heading>
+            <Grid templateColumns="repeat(5, 1fr)" gap={16} mt="8" mb="8">
+              <Card
+                title="Create New Project"
+                subtitle="+"
+                href="/content-management-form"
+                bg="green.300"
+              />
+            </Grid>
+          </>
+        )}
       </Box>
     </Stack>
   );
