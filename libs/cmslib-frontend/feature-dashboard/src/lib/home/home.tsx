@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Box, Stack } from '@chakra-ui/react';
+import { Box, Stack, Heading, Flex, HStack, Grid } from '@chakra-ui/react';
+import { Card } from '@cms-blog/cmslib-frontend/ui';
 
 /* eslint-disable-next-line */
 export interface HomeProps {}
@@ -21,7 +22,55 @@ export function Home(props: HomeProps) {
         rounded="lg"
         bg="gray.100"
       >
-        <h1>Welcome to Home!</h1>
+        <Heading as="h3" size="lg" mb="3">
+          Dashboard
+        </Heading>
+        <Heading as="h5" size="md" mt='16'>
+          Choose Your Project:
+        </Heading>
+        <Grid templateColumns='repeat(4, 1fr)' gap={16} mt='8'>
+          <Card
+            title="surabaya.py"
+            subtitle="webpage 1"
+            href="/content-management-form"
+          />
+          <Card
+            title="surabaya.py"
+            subtitle="webpage 1"
+            href="/content-management-form"
+          />
+          <Card
+            title="surabaya.py"
+            subtitle="webpage 1"
+            href="/content-management-form"
+          />
+          <Card
+            title="surabaya.py"
+            subtitle="webpage 1"
+            href="/content-management-form"
+          />
+           <Card
+            title="surabaya.py"
+            subtitle="webpage 1"
+            href="/content-management-form"
+          />
+           <Card
+            title="surabaya.py"
+            subtitle="webpage 1"
+            href="/content-management-form"
+          />
+        </Grid>
+        <Heading as="h5" size="md" mt="28">
+          Or Just Create New One!
+        </Heading>
+        <Grid templateColumns='repeat(5, 1fr)' gap={16} mt='8'>
+         <Card
+            title="Create New Project"
+            subtitle="+"
+            href="/content-management-form"
+            bg='green.300'
+          />
+          </Grid>
       </Box>
     </Stack>
   );

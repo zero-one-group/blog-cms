@@ -14,11 +14,11 @@ export function Navbar(props: NavbarProps) {
       p="4"
       zIndex="100"
     >
-      <a style={{ color: 'white' }} href="/content-management-form">
+      <a style={{ color: 'white' }} href="/home">
         CMS - Blog
       </a>
-      <Spacer/>
-      <a style={{ color: 'white' }} href="/home">
+      <Spacer />
+      <a style={{ color: 'white' }} href="/login">
         Logout
       </a>
     </Flex>
