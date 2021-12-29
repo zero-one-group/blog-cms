@@ -19,7 +19,7 @@ export function Home(props: HomeProps) {
 
   return (
     <Stack>
-      <Box m="9" mt="20" p="9" boxShadow="xl" rounded="lg" bg="white">
+      <Box m="9" mt="20" p="9" boxShadow="xl" rounded="lg" bg="gray.100">
         <Heading as="h3" size="lg" mb="3">
           Dashboard
         </Heading>
@@ -49,7 +49,7 @@ export function Home(props: HomeProps) {
                 title="Create New Project"
                 subtitle="+"
                 href="/content-management-form"
-                bg="green.100"
+                bg="green.200"
                 boxShadow="xl"
               />
             </Grid>
@@ -64,7 +64,7 @@ export function Home(props: HomeProps) {
                 title="Create New Project"
                 subtitle="+"
                 href="/content-management-form"
-                bg="green.300"
+                bg="green.200"
               />
             </Grid>
           </>

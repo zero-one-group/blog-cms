@@ -88,6 +88,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
         return 'green.500';
       }
     };
+
     return (
       <Box mt="5" p="9" pt="6" boxShadow="lg" rounded="lg" bg="white">
         {props.index !== 0 && (
@@ -171,7 +172,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Box m="9" mt="20" p="9" boxShadow="lg" rounded="lg" bg="red.100">
+      <Box m="9" mt="20" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
         <Heading as="h2" size="lg">
           Hero
         </Heading>
@@ -179,7 +180,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           return <Form field={field} index={index} name="hero" />;
         })}
       </Box>
-      <Box m="9" mt="16" p="9" boxShadow="lg" rounded="lg" bg="yellow.100">
+      <Box m="9" mt="16" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
         <Heading as="h2" size="lg">
           Carousel
         </Heading>
@@ -194,7 +195,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
         p="9"
         boxShadow="lg"
         rounded="lg"
-        bg="green.100"
+        bg="gray.100"
       >
         <Heading as="h2" size="lg">
           Content
