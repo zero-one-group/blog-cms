@@ -1,14 +1,7 @@
 import styled from 'styled-components';
-import { TextAreaField, Navbar } from '@cms-blog/cmslib-frontend/ui';
-import { Route, useHistory } from 'react-router-dom';
-import {
-  Stack,
-  useColorModeValue,
-  Box,
-  Button,
-  Heading,
-  CloseButton,
-} from '@chakra-ui/react';
+import { TextAreaField } from '@cms-blog/cmslib-frontend/ui';
+import { useHistory } from 'react-router-dom';
+import { Box, Button, Heading, CloseButton } from '@chakra-ui/react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { AddIcon } from '@chakra-ui/icons';
 

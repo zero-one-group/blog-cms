@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Link, Text } from '@chakra-ui/react';
 
 /* eslint-disable-next-line */
 export interface CardProps {
@@ -7,11 +7,12 @@ export interface CardProps {
   subtitle: string;
   text?: string | null;
   href?: string;
+  onClick?: () => void;
 }
 
 export function Card(props: CardProps) {
   return (
-    <a href={props.href ? props.href : ''}>
+    <a onClick={props.onClick} href={props.href ? props.href : undefined}>
       <Box p="5" boxShadow="lg" rounded="lg" bg={props.bg ? props.bg : 'white'}>
         <Heading as="h3" size="md" mb="5">
           {props.title}
