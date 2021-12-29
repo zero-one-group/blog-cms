@@ -77,7 +77,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
                 />
               )}
               <Heading as="h3" size="md" mb="3">
-                Modal {index + 1}
+                Hero {index + 1}
               </Heading>
               <TextAreaField
                 defaultValues={field.modal.imageURL}
