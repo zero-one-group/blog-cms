@@ -5,19 +5,14 @@ export interface CardProps {
   bg?: string;
   title: string;
   subtitle: string;
-  text?: string;
+  text?: string | null;
   href?: string;
 }
 
 export function Card(props: CardProps) {
   return (
     <a href={props.href ? props.href : ''}>
-      <Box
-        p="5"
-        boxShadow="lg"
-        rounded="lg"
-        bg={props.bg ? props.bg : 'white'}
-      >
+      <Box p="5" boxShadow="lg" rounded="lg" bg={props.bg ? props.bg : 'white'}>
         <Heading as="h3" size="md" mb="5">
           {props.title}
         </Heading>

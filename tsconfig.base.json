@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@cms-blog/cmslib-frontend/data-access": [
+        "libs/cmslib-frontend/data-access/src/index.ts"
+      ],
       "@cms-blog/cmslib-frontend/feature-dashboard": [
         "libs/cmslib-frontend/feature-dashboard/src/index.ts"
       ],
