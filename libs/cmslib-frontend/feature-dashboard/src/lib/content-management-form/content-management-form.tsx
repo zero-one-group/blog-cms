@@ -24,7 +24,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     defaultValues: {
       payload: [
         {
-          modal: {
+          hero: {
             imageURL: '',
             header: '',
             subheader: '',
@@ -80,23 +80,23 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
                 Hero {index + 1}
               </Heading>
               <TextAreaField
-                defaultValues={field.modal.imageURL}
+                defaultValues={field.hero.imageURL}
                 label="Image URL"
-                {...register(`payload.${index}.modal.imageURL`, {
+                {...register(`payload.${index}.hero.imageURL`, {
                   required: 'fill the textarea!',
                 })}
               />
               <TextAreaField
-                defaultValues={field.modal.header}
+                defaultValues={field.hero.header}
                 label="Header"
-                {...register(`payload.${index}.modal.header`, {
+                {...register(`payload.${index}.hero.header`, {
                   required: 'fill the textarea!',
                 })}
               />
               <TextAreaField
-                defaultValues={field.modal.subheader}
+                defaultValues={field.hero.subheader}
                 label="Subheader"
-                {...register(`payload.${index}.modal.subheader`, {
+                {...register(`payload.${index}.hero.subheader`, {
                   required: 'fill the textarea!',
                 })}
               />
@@ -106,7 +106,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
                   w="10%"
                   onClick={() =>
                     append({
-                      modal: {
+                      hero: {
                         imageURL: '',
                         header: '',
                         subheader: '',
