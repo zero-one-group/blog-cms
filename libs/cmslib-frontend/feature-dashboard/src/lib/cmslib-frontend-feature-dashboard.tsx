@@ -1,18 +1,8 @@
-import { TextAreaField, Navbar } from '@cms-blog/cmslib-frontend/ui';
+import { Navbar } from '@cms-blog/cmslib-frontend/ui';
 import { Home } from './home/home';
 import { ContentManagementForm } from './content-management-form/content-management-form';
-import { Route, useHistory } from 'react-router-dom';
-import {
-  Stack,
-  useColorModeValue,
-  Box,
-  Button,
-  Heading,
-  CloseButton,
-  Text,
-} from '@chakra-ui/react';
-import { useForm, useFieldArray } from 'react-hook-form';
-import { AddIcon } from '@chakra-ui/icons';
+import { Route } from 'react-router-dom';
+import { Stack, useColorModeValue, Text } from '@chakra-ui/react';
 
 /* eslint-disable-next-line */
 export interface CmslibFrontendFeatureDashboardProps {}
@@ -24,7 +14,7 @@ export function CmslibFrontendFeatureDashboard(
   return (
     <>
       <Stack
-        bg={useColorModeValue('gray.300', 'inherit')}
+        bg={useColorModeValue('white', 'inherit')}
         spacing={0}
         minHeight="100vh"
       >
@@ -37,11 +27,11 @@ export function CmslibFrontendFeatureDashboard(
         />
       </Stack>
       <Stack
-        bg={useColorModeValue('gray.100', 'inherit')}
+        bg={useColorModeValue('#636e72', 'inherit')}
         spacing={0}
         minHeight="10vh"
       >
-        <Text fontSize="md" mt="5" textAlign="center">
+        <Text textColor="white" fontSize="md" mt="5" textAlign="center">
           Blog-CMS <br /> © {year} Muhammad Wildan Nur Karim
         </Text>
       </Stack>

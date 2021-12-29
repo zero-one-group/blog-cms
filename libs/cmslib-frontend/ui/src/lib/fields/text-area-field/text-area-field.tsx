@@ -24,7 +24,7 @@ export const TextAreaField = React.forwardRef<
     <FormControl pt="2">
       <FormLabel data-testid="field-title">{props.label}</FormLabel>
       <Textarea
-        maxWidth={props.maxWidth ? props.maxWidth : '50rem'}
+        maxWidth={props.maxWidth ? props.maxWidth : '100rem'}
         bg={props.bg ? props.bg : 'white'}
         ref={mergeRef}
         defaultValue={props.defaultValues ? props.defaultValues : ''}

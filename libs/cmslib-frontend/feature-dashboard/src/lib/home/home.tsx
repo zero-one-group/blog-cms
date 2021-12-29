@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import { Box, Stack, Heading, Flex, HStack, Grid } from '@chakra-ui/react';
+import { Box, Stack, Heading, Grid } from '@chakra-ui/react';
 import {
   getDashboardData,
   DashboardDataProps,
@@ -20,15 +19,7 @@ export function Home(props: HomeProps) {
 
   return (
     <Stack>
-      <Box
-        m="9"
-        mt="16"
-        p="9"
-        borderColor="gray.300"
-        borderWidth="1px"
-        rounded="lg"
-        bg="gray.100"
-      >
+      <Box m="9" mt="20" p="9" boxShadow="xl" rounded="lg" bg="white">
         <Heading as="h3" size="lg" mb="3">
           Dashboard
         </Heading>
@@ -58,7 +49,8 @@ export function Home(props: HomeProps) {
                 title="Create New Project"
                 subtitle="+"
                 href="/content-management-form"
-                bg="green.300"
+                bg="green.100"
+                boxShadow="xl"
               />
             </Grid>
           </>
