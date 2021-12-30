@@ -75,6 +75,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     index: number;
     field: Hero;
     name: 'hero' | 'carousel' | 'content';
+    fields: Hero[];
   };
 
   const Form = (props: FormProps) => {
@@ -134,7 +135,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           })}
         />
 
-        <Button
+        {props.fields.length - 1 === index && (<Button
           w="10%"
           onClick={() => {
             if (name === 'hero') {
@@ -166,7 +167,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
         >
           <AddIcon mr={2} />
           Add
-        </Button>
+        </Button>) }
       </Box>
     );
   };
@@ -177,7 +178,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           Hero
         </Heading>
         {heroFields.map((field, index) => {
-          return <Form field={field} index={index} name="hero" />;
+          return <Form field={field} index={index} name="hero" fields={heroFields} />;
         })}
       </Box>
       <Box m="9" mt="16" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
@@ -185,7 +186,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           Carousel
         </Heading>
         {carouselFields.map((field, index) => {
-          return <Form field={field} index={index} name="carousel" />;
+          return <Form field={field} index={index} name="carousel" fields={carouselFields}/>;
         })}
       </Box>
       <Box
@@ -201,7 +202,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           Content
         </Heading>
         {contentFields.map((field, index) => {
-          return <Form field={field} index={index} name="content" />;
+          return <Form field={field} index={index} name="content" fields={contentFields} />;
         })}
       </Box>
     </form>
