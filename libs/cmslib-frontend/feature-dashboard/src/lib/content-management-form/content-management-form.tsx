@@ -78,6 +78,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     fields: Hero[];
   };
 
+  // Form Component
   const Form = (props: FormProps) => {
     const { index, field, name } = props;
     const bgColor = () => {
@@ -173,6 +174,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
       </Box>
     );
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box m="9" mt="20" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
@@ -200,15 +202,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           );
         })}
       </Box>
-      <Box
-        m="9"
-        mt="16"
-        mb="16"
-        p="9"
-        boxShadow="lg"
-        rounded="lg"
-        bg="gray.100"
-      >
+      <Box m="9" mt="16" mb="8" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
         <Heading as="h2" size="lg">
           Content
         </Heading>
@@ -222,6 +216,19 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
             />
           );
         })}
+      </Box>
+      <Box textAlign="center" mb="16">
+        <Button
+          id="generate-form"
+          type="submit"
+          color="white"
+          boxShadow="lg"
+          minWidth="50rem"
+          _hover={{ bg: 'tealPrimary.hover' }}
+          bg="blue.400"
+        >
+          Submit!
+        </Button>
       </Box>
     </form>
   );
