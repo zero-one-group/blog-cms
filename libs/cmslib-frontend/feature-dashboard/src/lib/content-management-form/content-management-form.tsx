@@ -135,39 +135,41 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           })}
         />
 
-        {props.fields.length - 1 === index && (<Button
-          w="10%"
-          onClick={() => {
-            if (name === 'hero') {
-              appendHero({
-                imageURL: '',
-                header: '',
-                subheader: '',
-              });
-            }
-            if (name === 'carousel') {
-              appendCarousel({
-                imageURL: '',
-                header: '',
-                subheader: '',
-              });
-            }
-            if (name === 'content') {
-              appendContent({
-                imageURL: '',
-                header: '',
-                subheader: '',
-              });
-            }
-          }}
-          mt={6}
-          color="white"
-          _hover={{ bg: 'tealPrimary.hover' }}
-          bg={bgColor()}
-        >
-          <AddIcon mr={2} />
-          Add
-        </Button>) }
+        {props.fields.length - 1 === index && (
+          <Button
+            w="10%"
+            onClick={() => {
+              if (name === 'hero') {
+                appendHero({
+                  imageURL: '',
+                  header: '',
+                  subheader: '',
+                });
+              }
+              if (name === 'carousel') {
+                appendCarousel({
+                  imageURL: '',
+                  header: '',
+                  subheader: '',
+                });
+              }
+              if (name === 'content') {
+                appendContent({
+                  imageURL: '',
+                  header: '',
+                  subheader: '',
+                });
+              }
+            }}
+            mt={6}
+            color="white"
+            _hover={{ bg: 'tealPrimary.hover' }}
+            bg={bgColor()}
+          >
+            <AddIcon mr={2} />
+            Add
+          </Button>
+        )}
       </Box>
     );
   };
@@ -178,7 +180,9 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           Hero
         </Heading>
         {heroFields.map((field, index) => {
-          return <Form field={field} index={index} name="hero" fields={heroFields} />;
+          return (
+            <Form field={field} index={index} name="hero" fields={heroFields} />
+          );
         })}
       </Box>
       <Box m="9" mt="16" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
@@ -186,7 +190,14 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           Carousel
         </Heading>
         {carouselFields.map((field, index) => {
-          return <Form field={field} index={index} name="carousel" fields={carouselFields}/>;
+          return (
+            <Form
+              field={field}
+              index={index}
+              name="carousel"
+              fields={carouselFields}
+            />
+          );
         })}
       </Box>
       <Box
@@ -202,7 +213,14 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           Content
         </Heading>
         {contentFields.map((field, index) => {
-          return <Form field={field} index={index} name="content" fields={contentFields} />;
+          return (
+            <Form
+              field={field}
+              index={index}
+              name="content"
+              fields={contentFields}
+            />
+          );
         })}
       </Box>
     </form>
