@@ -1,0 +1,25 @@
+{
+  "root": "libs/cmslib-frontend/feature-dashboard",
+  "sourceRoot": "libs/cmslib-frontend/feature-dashboard/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/cmslib-frontend/feature-dashboard/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cmslib-frontend/feature-dashboard"],
+      "options": {
+        "jestConfig": "libs/cmslib-frontend/feature-dashboard/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

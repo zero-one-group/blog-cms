@@ -1,4 +1,5 @@
 import { CmslibFrontendFeatureLogin } from '@cms-blog/cmslib-frontend/feature-login';
+import { CmslibFrontendFeatureDashboard } from '@cms-blog/cmslib-frontend/feature-dashboard';
 import { ChakraProvider } from '@chakra-ui/provider';
 import { Route, Link } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ export function App() {
         )}
       />
       <Route path="/login" component={CmslibFrontendFeatureLogin} />
+      <Route path="/:menu" component={CmslibFrontendFeatureDashboard} />
     </ChakraProvider>
   );
 }

@@ -1,0 +1,25 @@
+{
+  "root": "libs/cmslib-frontend/data-access",
+  "sourceRoot": "libs/cmslib-frontend/data-access/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/cmslib-frontend/data-access/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cmslib-frontend/data-access"],
+      "options": {
+        "jestConfig": "libs/cmslib-frontend/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
