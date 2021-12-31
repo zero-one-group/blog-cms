@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "cms-backend": "apps/cms-backend",
     "cms-frontend": "apps/cms-frontend",
     "cms-frontend-e2e": "apps/cms-frontend-e2e",
     "cmslib-frontend-data-access": "libs/cmslib-frontend/data-access",
