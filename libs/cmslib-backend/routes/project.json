@@ -1,0 +1,23 @@
+{
+  "root": "libs/cmslib-backend/routes",
+  "sourceRoot": "libs/cmslib-backend/routes/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/cmslib-backend/routes/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cmslib-backend/routes"],
+      "options": {
+        "jestConfig": "libs/cmslib-backend/routes/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

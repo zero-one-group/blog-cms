@@ -1,6 +1,11 @@
 {
   "version": 2,
   "projects": {
+    "-cmslib-backend-interface": "libs/cmslib-backend/interface",
+    "-cmslib-backend-migration": "libs/cmslib-backend/migration",
+    "-cmslib-backend-model": "libs/cmslib-backend/model",
+    "-cmslib-backend-plugin": "libs/cmslib-backend/plugin",
+    "-cmslib-backend-routes": "libs/cmslib-backend/routes",
     "cms-backend": "apps/cms-backend",
     "cms-frontend": "apps/cms-frontend",
     "cms-frontend-e2e": "apps/cms-frontend-e2e",

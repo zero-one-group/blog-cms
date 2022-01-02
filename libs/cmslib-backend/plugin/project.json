@@ -1,0 +1,23 @@
+{
+  "root": "libs/cmslib-backend/plugin",
+  "sourceRoot": "libs/cmslib-backend/plugin/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/cmslib-backend/plugin/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cmslib-backend/plugin"],
+      "options": {
+        "jestConfig": "libs/cmslib-backend/plugin/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
