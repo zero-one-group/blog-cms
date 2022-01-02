@@ -22,4 +22,4 @@ ARG CACHEBUST=1
 ENV YARN_CACHE_FOLDER=/tmp/yarn_cache
 RUN --mount=type=cache,target=/tmp/yarn_cache yarn install --prefer-online
 COPY . /
-CMD ["yarn", "dev"]
+CMD ["yarn", "dev:api"]

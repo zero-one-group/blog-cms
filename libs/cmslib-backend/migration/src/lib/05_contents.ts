@@ -1,6 +1,6 @@
 import * as Knex from 'knex';
 
-import {TableName} from '../../../interface/src/lib/tablename';
+import { TableName } from '../../../interface/src/lib/tablename';
 
 export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable(TableName.CONTENTS, (t) => {
@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
     t.text('image_url').notNullable();
     t.text('header').notNullable();
     t.text('subheader').notNullable();
-  })
+  });
 }
 
 export async function down(knex: Knex): Promise<void> {
