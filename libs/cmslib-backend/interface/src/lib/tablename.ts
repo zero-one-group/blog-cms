@@ -3,5 +3,5 @@ export enum TableName {
   PROJECTS = 'projects',
   CONTENTS = 'contents',
   CAROUSELS = 'carousels',
-  HERO = 'heros'
+  HEROS = 'heros'
 }
