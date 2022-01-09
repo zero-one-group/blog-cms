@@ -1,1 +1,2 @@
-export * from './lib/-cmslib-backend-model';
+export * from './lib/hero.model';
+export * from './lib/project.model';
