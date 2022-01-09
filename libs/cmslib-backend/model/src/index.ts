@@ -1,1 +1,4 @@
-export * from './lib/-cmslib-backend-model';
+export * from './lib/hero.model';
+export * from './lib/project.model';
+export * from './lib/content.model';
+export * from './lib/carousel.model';
