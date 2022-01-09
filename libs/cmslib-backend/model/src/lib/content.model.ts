@@ -1,6 +1,6 @@
 import { Model } from 'objection';
 
-import { TableName } from '@cms-blog//cmslib-backend/interface';
+import { TableName } from '../../../interface/src/lib/tablename';
 import { ProjectModel } from './project.model';
 import { BaseModel } from './base.model';
 

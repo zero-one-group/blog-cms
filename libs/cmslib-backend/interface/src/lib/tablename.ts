@@ -4,4 +4,6 @@ export enum TableName {
   CONTENTS = 'contents',
   CAROUSELS = 'carousels',
   HEROS = 'heros',
+  USER_PROJECT = 'user_project',
+  FORM = 'form',
 }

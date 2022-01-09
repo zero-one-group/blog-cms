@@ -8,5 +8,8 @@ build-api:
 run-migrate-api:
 	yarn db migrate:latest
 
+run-seed-api:
+	yarn db seed:run
+
 run-rollback-api:
 	yarn db migrate:rollback

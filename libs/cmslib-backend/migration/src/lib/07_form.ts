@@ -3,9 +3,15 @@ import * as Knex from 'knex';
 import { TableName } from '../../../interface/src/lib/tablename';
 
 export async function up(knex: Knex): Promise<void> {
-  return knex.schema.createTable(TableName.PROJECTS, (t) => {
+  return knex.schema.createTable(TableName.FORM, (t) => {
     t.bigInteger('id').notNullable().unique().primary();
-    t.text('project_name').notNullable();
+    t.bigInteger('project_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable(TableName.PROJECTS)
+      .onDelete('CASCADE')
+      .index();
     t.bigInteger('hero_id')
       .unsigned()
       .notNullable()
@@ -30,6 +36,7 @@ export async function up(knex: Knex): Promise<void> {
   });
 }
 
-export async function down(knex: Knex): Promise<void> {
-  return knex.schema.dropTableIfExists(TableName.PROJECTS);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function down(knex: Knex): Promise<any> {
+  return knex.schema.dropTableIfExists(TableName.FORM);
 }

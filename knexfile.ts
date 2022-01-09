@@ -28,6 +28,10 @@ const config = {
     directory: './libs/cmslib-backend/migration/src/lib',
     extension: 'ts',
   },
+  seeds: {
+    directory: './libs/cmslib-backend/seeds/src/lib',
+    extension: 'ts',
+  },
 };
 
 export default config;

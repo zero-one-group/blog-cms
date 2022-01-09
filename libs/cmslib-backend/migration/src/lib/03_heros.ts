@@ -8,6 +8,15 @@ export async function up(knex: Knex): Promise<void> {
     t.text('image_url').notNullable();
     t.text('header').notNullable();
     t.text('subheader').notNullable();
+    t.bigInteger('project_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable(TableName.PROJECTS)
+      .onDelete('CASCADE')
+      .index();
+    t.timestamp('created_at', { useTz: true }).defaultTo(knex.fn.now());
+    t.timestamp('updated_at', { useTz: true });
   });
 }
 
