@@ -12,27 +12,6 @@ export async function up(knex: Knex): Promise<void> {
       .inTable(TableName.PROJECTS)
       .onDelete('CASCADE')
       .index();
-    t.bigInteger('hero_id')
-      .unsigned()
-      .notNullable()
-      .references('id')
-      .inTable(TableName.HEROS)
-      .onDelete('CASCADE')
-      .index();
-    t.bigInteger('carousel_id')
-      .unsigned()
-      .notNullable()
-      .references('id')
-      .inTable(TableName.CAROUSELS)
-      .onDelete('CASCADE')
-      .index();
-    t.bigInteger('content_id')
-      .unsigned()
-      .notNullable()
-      .references('id')
-      .inTable(TableName.CONTENTS)
-      .onDelete('CASCADE')
-      .index();
   });
 }
 

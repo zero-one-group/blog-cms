@@ -78,9 +78,6 @@ export async function seed(knex: Knex): Promise<void> {
     {
       id: 1,
       project_id: 1,
-      hero_id: 1,
-      content_id: 1,
-      carousel_id: 1,
     },
   ]);
 }

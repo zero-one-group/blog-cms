@@ -7,9 +7,6 @@ import { Model } from 'objection';
 
 export class FormModel extends BaseModel {
   user_id!: number;
-  hero_id!: number;
-  carousel_id!: number;
-  content_id!: number;
   project_id!: number;
   created_at!: Date;
   updated_at!: Date;
@@ -27,7 +24,7 @@ export class GraphFetchedFormModel extends FormModel {
       modelClass: GraphFetchedCarouselModel,
       relation: Model.HasManyRelation,
       join: {
-        from: `${TableName.FORM}.carousel_id`,
+        from: `${TableName.FORM}.project_id`,
         to: `${TableName.CAROUSELS}.project_id`,
       },
     },
@@ -35,7 +32,7 @@ export class GraphFetchedFormModel extends FormModel {
       modelClass: GraphFetchedHeroModel,
       relation: Model.HasManyRelation,
       join: {
-        from: `${TableName.FORM}.hero_id`,
+        from: `${TableName.FORM}.project_id`,
         to: `${TableName.HEROS}.project_id`,
       },
     },
@@ -43,7 +40,7 @@ export class GraphFetchedFormModel extends FormModel {
       modelClass: GraphFetchedContentModel,
       relation: Model.HasManyRelation,
       join: {
-        from: `${TableName.FORM}.content_id`,
+        from: `${TableName.FORM}.project_id`,
         to: `${TableName.CONTENTS}.project_id`,
       },
     },

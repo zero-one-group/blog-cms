@@ -38,12 +38,6 @@ async function saveRecords(
       subheader: record.subheader,
       project_id: projectId,
     });
-    // await FormModel.query(trx).insert({
-    //   project_id: projectId,
-    //   hero_id: hero.id,
-    //   carousel_id: null,
-    //   content_id: null
-    // });
   }
   for (const record of payload.carousel) {
     await CarouselModel.query(trx).insert({
@@ -52,12 +46,6 @@ async function saveRecords(
       subheader: record.subheader,
       project_id: projectId,
     });
-    // await FormModel.query(trx).insert({
-    //   project_id: projectId,
-    //   carousel_id: carousel.id,
-    //   hero_id: null,
-    //   content_id: null
-    // });
   }
   for (const record of payload.content) {
     await ContentModel.query(trx).insert({
@@ -66,13 +54,8 @@ async function saveRecords(
       subheader: record.subheader,
       project_id: projectId,
     });
-    // await FormModel.query(trx).insert({
-    //   project_id: projectId,
-    //   content_id: content.id,
-    //   hero_id: null,
-    //   carousel_id: null
-    // });
   }
+  await FormModel.query(trx).insert({ project_id: projectId });
 }
 
 async function create(payload: CreateForm): Promise<ProjectData> {
