@@ -6,7 +6,6 @@ import {
   CarouselModel,
   ContentModel,
   ProjectModel,
-  FormModel,
   GraphFetchedProjectModel,
 } from '@cms-blog/cmslib-backend/model';
 import {
@@ -23,7 +22,7 @@ async function getByUserId(
 }
 
 async function deleteProject(projectId: number) {
-  await FormModel.query().whereIn('project_id', projectId).del();
+  // await FormModel.query().whereIn('project_id', projectId).del();
   await ProjectModel.query().where('project_id', projectId).del();
 }
 

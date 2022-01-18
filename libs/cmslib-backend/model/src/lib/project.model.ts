@@ -1,6 +1,8 @@
 import { TableName } from '../../../interface/src/lib/tablename';
 import { BaseModel } from './base.model';
-import { GraphFetchedFormModel } from './form.model';
+import { GraphFetchedCarouselModel } from './carousel.model';
+import { GraphFetchedHeroModel } from './hero.model';
+import { GraphFetchedContentModel } from './content.model';
 import { Model } from 'objection';
 
 export class ProjectModel extends BaseModel {
@@ -13,15 +15,33 @@ export class ProjectModel extends BaseModel {
 }
 
 export class GraphFetchedProjectModel extends ProjectModel {
-  form_records!: GraphFetchedFormModel[];
+  carousel!: GraphFetchedCarouselModel[];
+  hero!: GraphFetchedHeroModel[];
+  content!: GraphFetchedContentModel[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static relationMappings = (): any => ({
-    form_records: {
-      modelClass: GraphFetchedFormModel,
+    carousel: {
+      modelClass: GraphFetchedCarouselModel,
       relation: Model.HasManyRelation,
       join: {
         from: `${TableName.PROJECTS}.id`,
-        to: `${TableName.FORM}.project_id`,
+        to: `${TableName.CAROUSELS}.project_id`,
+      },
+    },
+    hero: {
+      modelClass: GraphFetchedHeroModel,
+      relation: Model.HasManyRelation,
+      join: {
+        from: `${TableName.PROJECTS}.id`,
+        to: `${TableName.HEROS}.project_id`,
+      },
+    },
+    content: {
+      modelClass: GraphFetchedContentModel,
+      relation: Model.HasManyRelation,
+      join: {
+        from: `${TableName.PROJECTS}.id`,
+        to: `${TableName.CONTENTS}.project_id`,
       },
     },
   });

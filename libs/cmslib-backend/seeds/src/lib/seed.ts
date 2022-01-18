@@ -7,7 +7,6 @@ import {
   HeroModel,
   ContentModel,
   CarouselModel,
-  FormModel,
 } from '../../../model/src';
 export async function seed(knex: Knex): Promise<void> {
   const password = await bcrypt.hash('wildan', 10);
@@ -70,14 +69,6 @@ export async function seed(knex: Knex): Promise<void> {
       header: 'Konten Komunitas Pecinta Loli',
       subheader: 'komunitas pecinta loli',
       image_url: 'http://terserah',
-    },
-  ]);
-
-  // Create Content with it corresponding sites
-  await FormModel.query(knex).insert([
-    {
-      id: 1,
-      project_id: 1,
     },
   ]);
 }

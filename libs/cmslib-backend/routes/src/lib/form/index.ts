@@ -6,7 +6,6 @@ import {
   CarouselModel,
   ContentModel,
   ProjectModel,
-  FormModel,
   GraphFetchedProjectModel,
 } from '@cms-blog/cmslib-backend/model';
 import {
@@ -22,7 +21,7 @@ async function getByProjectId(
 ): Promise<ProjectFormData> {
   return (await GraphFetchedProjectModel.query()
     .where('id', query.project_id)
-    .withGraphFetched('form_records.[hero, carousel, content]')
+    .withGraphFetched('[hero, carousel, content]')
     .first()) as ProjectFormData;
 }
 
@@ -55,7 +54,6 @@ async function saveRecords(
       project_id: projectId,
     });
   }
-  await FormModel.query(trx).insert({ project_id: projectId });
 }
 
 async function create(payload: CreateForm): Promise<ProjectData> {
