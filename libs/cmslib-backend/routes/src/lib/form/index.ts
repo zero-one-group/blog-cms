@@ -72,13 +72,6 @@ async function create(payload: CreateForm): Promise<ProjectData> {
   });
 }
 
-async function deleteRecords(projectId: number, trx: Transaction) {
-  const records = await FormModel.query(trx).where('project_id', projectId);
-  // const paramsIds = records.map((rec) => rec.project_id);
-  await FormModel.query(trx).whereIn('project_id', projectId).del();
-  await ProjectModel.query(trx).where('project_id', projectId).del();
-}
-
 async function update(id: number, payload: CreateForm): Promise<ProjectData> {
   return ProjectModel.transaction(async (trx) => {
     const projectData = {
@@ -91,7 +84,6 @@ async function update(id: number, payload: CreateForm): Promise<ProjectData> {
       id,
       projectData
     );
-    // await deleteRecords(id, trx);
     await saveRecords(payload, project.id, trx);
     return project;
   });
@@ -114,7 +106,7 @@ export const form: FastifyPluginAsync = async function (
   fastify.put<{ Body: CreateForm; Params: { id: string } }>(
     '/',
     async function (request, reply) {
-      await update(+request.params.id as number, request.body as CreateForm);
+      await update(+request.params.id, request.body as CreateForm);
       reply.send({ 200: 'success!' });
     }
   );
