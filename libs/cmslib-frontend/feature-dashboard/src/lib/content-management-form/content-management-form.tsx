@@ -1,6 +1,14 @@
 import { TextAreaField } from '@cms-blog/cmslib-frontend/ui';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Box, Button, Heading, CloseButton } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Heading,
+  CloseButton,
+  FormControl,
+  Input,
+  HStack,
+} from '@chakra-ui/react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { AddIcon } from '@chakra-ui/icons';
 import axios from 'axios';
@@ -17,12 +25,13 @@ type FormData = {
 
 type SubmitDataType = {
   form_data: {
-    project_name: string,
-  descriptions: string,
-  hero: FormData[],
-  carousel: FormData[],
-  content: FormData[],}
-}
+    project_name: string;
+    descriptions: string;
+    hero: FormData[];
+    carousel: FormData[];
+    content: FormData[];
+  };
+};
 
 type LocationType = {
   mode: string;
@@ -58,6 +67,8 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
         location.state.mode === 'edit'
           ? location.state.form_data
           : {
+              project_name: '',
+              descriptions: '',
               hero: [
                 {
                   image_url: '',
@@ -122,8 +133,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           },
         }
       );
-      history.push('/home', {
-      });
+      history.push('/home', {});
     } catch (err) {
       console.log(err);
     }
@@ -229,7 +239,25 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Box m="9" mt="20" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
+      <HStack mx="9" mt="20" p="6">
+        <FormControl pr='10'>
+          <Heading as="h2" size="lg" mb="4">
+            Project Name
+          </Heading>
+          <Input {...register(`form_data.project_name`, {
+            required: 'Please fill the project name',
+          })}/>
+        </FormControl>
+        <FormControl pl='10'>
+          <Heading as="h2" size="lg" mb="4">
+            Project Descriptions
+          </Heading>
+          <Input {...register(`form_data.descriptions`, {
+            required: 'Please fill the project name',
+          })}/>
+        </FormControl>
+      </HStack>
+      <Box m="9" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
         <Heading as="h2" size="lg">
           Hero
         </Heading>
