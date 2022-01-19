@@ -13,19 +13,9 @@ export interface HomeProps {}
 export function Home(props: HomeProps) {
   const [dashboardData, setDashboardData] = useState<DashboardData[]>();
 
+  // TODO: Can use dynamic user_id
   const userId = 1;
   const URL = 'http://localhost:8080';
-  // const dashboardData = GetDashboardData({user_id: 1});
-  // useEffect(() => {
-  //   GetDashboardData({user_id: 1}).then((results) => {
-  //     return setDashboardData(results as DashboardData[]);
-  //   });
-  // }, []);
-  // async function DashboardData(): Promise<DashboardData[]> {
-  //   return await GetDashboardData({user_id: 1})
-  // }
-
-  // setDashboardData(DashboardData())
 
   React.useEffect(() => {
     axios
@@ -41,6 +31,7 @@ export function Home(props: HomeProps) {
         console.log(err);
       });
   }, []);
+
   return (
     <Stack>
       <Box m="9" mt="20" p="9" boxShadow="xl" rounded="lg" bg="gray.100">
@@ -59,8 +50,7 @@ export function Home(props: HomeProps) {
                     <Card
                       key={index}
                       title={data.project_name}
-                      // subtitle={data.subtitle}
-                      // text={data.text}
+                      subtitle={data.descriptions}
                       href="/content-management-form"
                     />
                   );

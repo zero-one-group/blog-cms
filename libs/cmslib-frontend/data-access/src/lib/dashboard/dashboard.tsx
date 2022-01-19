@@ -11,6 +11,7 @@ export type DashboardData = {
   id: number;
   user_id: number;
   project_name: string;
+  descriptions: string;
   created_at: string;
   updated_at: string;
 };

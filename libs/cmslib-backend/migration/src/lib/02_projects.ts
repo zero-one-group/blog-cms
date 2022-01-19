@@ -13,6 +13,7 @@ export async function up(knex: Knex): Promise<void> {
       .onDelete('CASCADE')
       .index();
     t.text('project_name').notNullable();
+    t.text('descriptions').notNullable();
     t.timestamp('created_at', { useTz: true })
       .defaultTo(knex.fn.now())
       .notNullable();
