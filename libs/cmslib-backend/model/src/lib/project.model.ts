@@ -8,6 +8,7 @@ import { Model } from 'objection';
 export class ProjectModel extends BaseModel {
   user_id!: number;
   project_name!: string;
+  descriptions!: string;
   created_at!: Date;
   updated_at!: Date;
 

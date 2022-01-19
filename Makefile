@@ -13,3 +13,6 @@ run-seed-api:
 
 run-rollback-api:
 	yarn db migrate:rollback
+
+it-run:
+	yarn start:all

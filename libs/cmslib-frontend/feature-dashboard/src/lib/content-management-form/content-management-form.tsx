@@ -1,36 +1,97 @@
 import { TextAreaField } from '@cms-blog/cmslib-frontend/ui';
-import { useHistory } from 'react-router-dom';
-import { Box, Button, Heading, CloseButton } from '@chakra-ui/react';
+import { useHistory, useLocation } from 'react-router-dom';
+import {
+  Box,
+  Button,
+  Heading,
+  CloseButton,
+  FormControl,
+  Input,
+  HStack,
+} from '@chakra-ui/react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { AddIcon } from '@chakra-ui/icons';
+import axios from 'axios';
+import * as React from 'react';
 
 /* eslint-disable-next-line */
 export interface ContentManagementFormProps {}
 
+type FormData = {
+  image_url: string;
+  header: string;
+  subheader: string;
+};
+
+type SubmitDataType = {
+  form_data: {
+    project_name: string;
+    descriptions: string;
+    hero: FormData[];
+    carousel: FormData[];
+    content: FormData[];
+  };
+};
+
+type LocationType = {
+  mode: string;
+  project_id: number;
+  project_name: string;
+  descriptions: string;
+  form_data: FormData;
+};
+
+type FormProps = {
+  index: number;
+  field: {
+    image_url: string;
+    header: string;
+    subheader: string;
+  };
+  name: 'hero' | 'carousel' | 'content';
+  fields: {
+    image_url: string;
+    header: string;
+    subheader: string;
+  }[];
+};
+
 export function ContentManagementForm(props: ContentManagementFormProps) {
+  const location = useLocation<LocationType>();
+  // TODO: can use dynamic user_id
+  const userId = 1;
+  const URL = 'http://localhost:8080';
+
   const { register, control, handleSubmit } = useForm({
     defaultValues: {
-      hero: [
-        {
-          imageURL: '',
-          header: '',
-          subheader: '',
-        },
-      ],
-      carousel: [
-        {
-          imageURL: '',
-          header: '',
-          subheader: '',
-        },
-      ],
-      content: [
-        {
-          imageURL: '',
-          header: '',
-          subheader: '',
-        },
-      ],
+      form_data:
+        location.state.mode === 'edit'
+          ? location.state.form_data
+          : {
+              project_name: '',
+              descriptions: '',
+              hero: [
+                {
+                  image_url: '',
+                  header: '',
+                  subheader: '',
+                },
+              ],
+              carousel: [
+                {
+                  image_url: '',
+                  header: '',
+                  subheader: '',
+                },
+              ],
+              content: [
+                {
+                  image_url: '',
+                  header: '',
+                  subheader: '',
+                },
+              ],
+            },
     },
   });
   const history = useHistory();
@@ -40,7 +101,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     append: appendHero,
     remove: removeHero,
   } = useFieldArray({
-    name: 'hero',
+    name: 'form_data.hero',
     control,
   });
 
@@ -49,7 +110,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     append: appendCarousel,
     remove: removeCarousel,
   } = useFieldArray({
-    name: 'carousel',
+    name: 'form_data.carousel',
     control,
   });
 
@@ -58,24 +119,40 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     append: appendContent,
     remove: removeContent,
   } = useFieldArray({
-    name: 'content',
+    name: 'form_data.content',
     control,
   });
 
-  const onSubmit = async (formData: unknown) => {
-    console.log(formData);
-  };
-
-  type Hero = {
-    imageURL: string;
-    header: string;
-    subheader: string;
-  };
-  type FormProps = {
-    index: number;
-    field: Hero;
-    name: 'hero' | 'carousel' | 'content';
-    fields: Hero[];
+  const onSubmit = async (formData: SubmitDataType) => {
+    try {
+      if (location.state.mode === 'create') {
+        await axios.post(
+          `${URL}/form`,
+          { user_id: userId, ...formData.form_data },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        history.push('/home', {});
+      }
+      if (location.state.mode === 'edit') {
+        await axios.put(
+          `${URL}/form/${location.state.project_id}`,
+          formData.form_data,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        history.push('/home', {});
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    console.log(formData.form_data);
   };
 
   // Form Component
@@ -115,23 +192,23 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           {props.name} {index + 1}
         </Heading>
         <TextAreaField
-          defaultValues={field.imageURL}
+          defaultValues={field.image_url}
           label="Image URL"
-          {...register(`${name}.${index}.imageURL`, {
+          {...register(`form_data.${name}.${index}.image_url`, {
             required: 'fill the textarea!',
           })}
         />
         <TextAreaField
           defaultValues={field.header}
           label="Header"
-          {...register(`${name}.${index}.header`, {
+          {...register(`form_data.${name}.${index}.header`, {
             required: 'fill the textarea!',
           })}
         />
         <TextAreaField
           defaultValues={field.subheader}
           label="Subheader"
-          {...register(`${name}.${index}.subheader`, {
+          {...register(`form_data.${name}.${index}.subheader`, {
             required: 'fill the textarea!',
           })}
         />
@@ -142,21 +219,21 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
             onClick={() => {
               if (name === 'hero') {
                 appendHero({
-                  imageURL: '',
+                  image_url: '',
                   header: '',
                   subheader: '',
                 });
               }
               if (name === 'carousel') {
                 appendCarousel({
-                  imageURL: '',
+                  image_url: '',
                   header: '',
                   subheader: '',
                 });
               }
               if (name === 'content') {
                 appendContent({
-                  imageURL: '',
+                  image_url: '',
                   header: '',
                   subheader: '',
                 });
@@ -177,7 +254,29 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Box m="9" mt="20" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
+      <HStack mx="9" mt="20" p="6">
+        <FormControl pr="10">
+          <Heading as="h2" size="lg" mb="4">
+            Project Name
+          </Heading>
+          <Input
+            {...register(`form_data.project_name`, {
+              required: 'Please fill the project name',
+            })}
+          />
+        </FormControl>
+        <FormControl pl="10">
+          <Heading as="h2" size="lg" mb="4">
+            Project Descriptions
+          </Heading>
+          <Input
+            {...register(`form_data.descriptions`, {
+              required: 'Please fill the project name',
+            })}
+          />
+        </FormControl>
+      </HStack>
+      <Box m="9" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
         <Heading as="h2" size="lg">
           Hero
         </Heading>

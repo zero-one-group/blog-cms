@@ -6,6 +6,7 @@ import * as Knex from 'knex';
 import { Model } from 'objection';
 import { join } from 'path';
 import { project, form } from '@cms-blog/cmslib-backend/routes';
+import fastifyCors from 'fastify-cors';
 
 import config from '../../../../knexfile';
 
@@ -29,6 +30,7 @@ const app: FastifyPluginAsync<AppOptions> = async (fastify): Promise<void> => {
 
   // This loads all plugins defined in routes
   // define your routes in one of these
+  fastify.register(fastifyCors, { origin: true });
   fastify.register(project, { prefix: '/project' });
   fastify.register(form, { prefix: '/form' });
 };

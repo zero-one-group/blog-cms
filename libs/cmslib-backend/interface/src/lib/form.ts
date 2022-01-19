@@ -10,6 +10,7 @@ type FormData = {
 export type CreateForm = {
   user_id: number;
   project_name: string;
+  descriptions: string;
   hero: FormData[];
   carousel: FormData[];
   content: FormData[];
