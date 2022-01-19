@@ -11,6 +11,7 @@ import { AlertDialog } from '../alert-dialog/alert-dialog';
 import * as React from 'react';
 import { URL } from '@cms-blog/cmslib-frontend/data-access';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface CardProps {
@@ -23,9 +24,11 @@ export interface CardProps {
   isEdit?: boolean;
   projectId?: number;
   onClick?: () => void;
+  setState?: (state: string) => void;
 }
 
 export function Card(props: CardProps) {
+  const history = useHistory();
   const [selectedId, setSelectedId] = React.useState<number | null>();
   const {
     isOpen: isOpenDelete,
@@ -46,6 +49,10 @@ export function Card(props: CardProps) {
           'Content-Type': 'application/json',
         },
       });
+      history.push('/home');
+      if (props.setState){
+        props.setState('Project deleted successfully!');
+      }
     } catch (error) {
       console.log(error);
     } finally {

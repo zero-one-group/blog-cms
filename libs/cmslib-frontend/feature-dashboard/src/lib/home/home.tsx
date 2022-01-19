@@ -20,7 +20,7 @@ export type HandleCreateEditProps = {
 
 export function Home(props: HomeProps) {
   const [dashboardData, setDashboardData] = React.useState<DashboardData[]>();
-  const [formData, setFormData] = React.useState();
+  const [project, setProject] = React.useState<string>('');
   const history = useHistory();
   // TODO: Can use dynamic user_id
   const userId = 1;
@@ -39,7 +39,7 @@ export function Home(props: HomeProps) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [project]);
 
   const handleOnClick = async (props: HandleCreateEditProps) => {
     try {
@@ -84,6 +84,7 @@ export function Home(props: HomeProps) {
                       subtitle={data.descriptions}
                       isEdit={true}
                       projectId={data.id}
+                      setState={setProject}
                       onClick={() =>
                         handleOnClick({
                           mode: 'edit',
