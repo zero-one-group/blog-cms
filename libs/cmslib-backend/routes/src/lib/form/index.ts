@@ -70,6 +70,25 @@ async function create(payload: CreateForm): Promise<ProjectData> {
   });
 }
 
+async function deleteRecords(projectId: number, trx: Transaction) {
+  const heroRecords = await HeroModel.query(trx).where('project_id', projectId);
+  const carouselRecords = await CarouselModel.query(trx).where(
+    'project_id',
+    projectId
+  );
+  const contentRecords = await ContentModel.query(trx).where(
+    'project_id',
+    projectId
+  );
+
+  const heroParamsIds = heroRecords.map((record) => record.id);
+  const carouselParamsIds = carouselRecords.map((record) => record.id);
+  const contentParamsIds = contentRecords.map((record) => record.id);
+  await HeroModel.query(trx).whereIn('id', heroParamsIds).del();
+  await CarouselModel.query(trx).whereIn('id', carouselParamsIds).del();
+  await ContentModel.query(trx).whereIn('id', contentParamsIds).del();
+}
+
 async function update(id: number, payload: CreateForm): Promise<ProjectData> {
   return ProjectModel.transaction(async (trx) => {
     const projectData = {
@@ -82,6 +101,7 @@ async function update(id: number, payload: CreateForm): Promise<ProjectData> {
       id,
       projectData
     );
+    await deleteRecords(project.id, trx);
     await saveRecords(payload, project.id, trx);
     return project;
   });
@@ -101,10 +121,10 @@ export const form: FastifyPluginAsync = async function (
     reply.send({ 200: 'success!' });
   });
 
-  fastify.put<{ Body: CreateForm; Params: { id: string } }>(
-    '/',
+  fastify.put<{ Body: CreateForm; Params: { id: number } }>(
+    '/:id',
     async function (request, reply) {
-      await update(+request.params.id, request.body as CreateForm);
+      await update(request.params.id, request.body as CreateForm);
       reply.send({ 200: 'success!' });
     }
   );
