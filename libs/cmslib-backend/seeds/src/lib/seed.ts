@@ -23,53 +23,53 @@ export async function seed(knex: Knex): Promise<void> {
     },
   ]);
 
-  // Create project with corresponding user
-  await ProjectModel.query(knex).insert([
-    {
-      id: 1,
-      user_id: 1,
-      project_name: 'Blog Pecinta Loli',
-      descriptions: 'blog tentang komunitas pecinta loli',
-    },
-  ]);
+  // // Create project with corresponding user
+  // await ProjectModel.query(knex).insert([
+  //   {
+  //     id: 1,
+  //     user_id: 1,
+  //     project_name: 'Blog Pecinta Loli',
+  //     descriptions: 'blog tentang komunitas pecinta loli',
+  //   },
+  // ]);
 
-  // Create Hero with corresponding project
-  await HeroModel.query(knex).insert([
-    {
-      id: 1,
-      project_id: 1,
-      header: 'Komunitas Pecinta Loli',
-      subheader: 'komunitas pecinta loli',
-      image_url: 'http://terserah',
-    },
-  ]);
+  // // Create Hero with corresponding project
+  // await HeroModel.query(knex).insert([
+  //   {
+  //     id: 1,
+  //     project_id: 1,
+  //     header: 'Komunitas Pecinta Loli',
+  //     subheader: 'komunitas pecinta loli',
+  //     image_url: 'http://terserah',
+  //   },
+  // ]);
 
-  // Create Carousel with it corresponding sites
-  await CarouselModel.query(knex).insert([
-    {
-      id: 1,
-      project_id: 1,
-      header: 'Kegiatan Komunitas Pecinta Loli',
-      subheader: 'kami mengadakan event peluk loli',
-      image_url: 'http://terserah',
-    },
-    {
-      id: 2,
-      project_id: 1,
-      header: 'Kegiatan Komunitas Pecinta Loli',
-      subheader: 'kami mengadakan event tangkap pedo',
-      image_url: 'http://terserah',
-    },
-  ]);
+  // // Create Carousel with it corresponding sites
+  // await CarouselModel.query(knex).insert([
+  //   {
+  //     id: 1,
+  //     project_id: 1,
+  //     header: 'Kegiatan Komunitas Pecinta Loli',
+  //     subheader: 'kami mengadakan event peluk loli',
+  //     image_url: 'http://terserah',
+  //   },
+  //   {
+  //     id: 2,
+  //     project_id: 1,
+  //     header: 'Kegiatan Komunitas Pecinta Loli',
+  //     subheader: 'kami mengadakan event tangkap pedo',
+  //     image_url: 'http://terserah',
+  //   },
+  // ]);
 
-  // Create Content with it corresponding sites
-  await ContentModel.query(knex).insert([
-    {
-      id: 1,
-      project_id: 1,
-      header: 'Konten Komunitas Pecinta Loli',
-      subheader: 'komunitas pecinta loli',
-      image_url: 'http://terserah',
-    },
-  ]);
+  // // Create Content with it corresponding sites
+  // await ContentModel.query(knex).insert([
+  //   {
+  //     id: 1,
+  //     project_id: 1,
+  //     header: 'Konten Komunitas Pecinta Loli',
+  //     subheader: 'komunitas pecinta loli',
+  //     image_url: 'http://terserah',
+  //   },
+  // ]);
 }

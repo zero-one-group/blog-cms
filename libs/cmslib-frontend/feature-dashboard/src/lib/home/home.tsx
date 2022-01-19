@@ -42,6 +42,7 @@ export function Home(props: HomeProps) {
   }, [project]);
 
   const handleOnClick = async (props: HandleCreateEditProps) => {
+    if(props.mode === 'edit'){
     try {
       const response = await axios.get(
         `${URL}/form?&project_id=${props.project_id}`,
@@ -60,6 +61,17 @@ export function Home(props: HomeProps) {
       });
     } catch (err) {
       console.log(err);
+    }
+
+    }
+    if(props.mode ==='create'){
+      history.push('/content-management-form', {
+        mode: props.mode,
+        project_id: props.project_id,
+        project_name: props.project_name,
+        descriptions: props.descriptions,
+        form_data: '',
+      });
     }
   };
 
@@ -128,6 +140,14 @@ export function Home(props: HomeProps) {
                   subtitle="+"
                   href="/content-management-form"
                   bg="green.200"
+                   onClick={() =>
+                    handleOnClick({
+                      mode: 'create',
+                      project_id: 0,
+                      project_name: '',
+                      descriptions: '',
+                    })
+                  }
                 />
               </Grid>
             </>
