@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { Box, Button, Heading, CloseButton } from '@chakra-ui/react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { AddIcon } from '@chakra-ui/icons';
+import axios from 'axios';
 import * as React from 'react';
 
 /* eslint-disable-next-line */
@@ -13,6 +14,15 @@ type FormData = {
   header: string;
   subheader: string;
 };
+
+type SubmitDataType = {
+  form_data: {
+    project_name: string,
+  descriptions: string,
+  hero: FormData[],
+  carousel: FormData[],
+  content: FormData[],}
+}
 
 type LocationType = {
   mode: string;
@@ -101,8 +111,23 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     control,
   });
 
-  const onSubmit = async (formData: unknown) => {
-    console.log(formData);
+  const onSubmit = async (formData: SubmitDataType) => {
+    try {
+      await axios.put(
+        `${URL}/form/${location.state.project_id}`,
+        formData.form_data,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      history.push('/home', {
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    console.log(formData.form_data);
   };
 
   // Form Component
