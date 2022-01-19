@@ -11,7 +11,7 @@ import { AlertDialog } from '../alert-dialog/alert-dialog';
 import * as React from 'react';
 import { URL } from '@cms-blog/cmslib-frontend/data-access';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface CardProps {
@@ -50,7 +50,7 @@ export function Card(props: CardProps) {
         },
       });
       history.push('/home');
-      if (props.setState){
+      if (props.setState) {
         props.setState('Project deleted successfully!');
       }
     } catch (error) {

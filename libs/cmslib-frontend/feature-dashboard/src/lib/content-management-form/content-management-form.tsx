@@ -58,6 +58,7 @@ type FormProps = {
 
 export function ContentManagementForm(props: ContentManagementFormProps) {
   const location = useLocation<LocationType>();
+  // TODO: can use dynamic user_id
   const userId = 1;
   const URL = 'http://localhost:8080';
 
@@ -124,16 +125,30 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
 
   const onSubmit = async (formData: SubmitDataType) => {
     try {
-      await axios.put(
-        `${URL}/form/${location.state.project_id}`,
-        formData.form_data,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      history.push('/home', {});
+      if (location.state.mode === 'create') {
+        await axios.post(
+          `${URL}/form`,
+          { user_id: userId, ...formData.form_data },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        history.push('/home', {});
+      }
+      if (location.state.mode === 'edit') {
+        await axios.put(
+          `${URL}/form/${location.state.project_id}`,
+          formData.form_data,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        history.push('/home', {});
+      }
     } catch (err) {
       console.log(err);
     }
