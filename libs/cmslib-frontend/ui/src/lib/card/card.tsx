@@ -4,7 +4,7 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 export interface CardProps {
   bg?: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   text?: string | null;
   href?: string;
   boxShadow?: string;
