@@ -1,20 +1,20 @@
 {
-  "root": "libs/cmslib-backend/plugin",
-  "sourceRoot": "libs/cmslib-backend/plugin/src",
+  "root": "libs/cmslib-backend/seeds",
+  "sourceRoot": "libs/cmslib-backend/seeds/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/cmslib-backend/plugin/**/*.ts"]
+        "lintFilePatterns": ["libs/cmslib-backend/seeds/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/cmslib-backend/plugin"],
+      "outputs": ["coverage/libs/cmslib-backend/seeds"],
       "options": {
-        "jestConfig": "libs/cmslib-backend/plugin/jest.config.js",
+        "jestConfig": "libs/cmslib-backend/seeds/jest.config.js",
         "passWithNoTests": true
       }
     }

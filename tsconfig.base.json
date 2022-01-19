@@ -15,19 +15,19 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@cms-blog//cmslib-backend/interface": [
+      "@cms-blog//cmslib-backend/seeds": [
+        "libs/cmslib-backend/seeds/src/index.ts"
+      ],
+      "@cms-blog/cmslib-backend/interface": [
         "libs/cmslib-backend/interface/src/index.ts"
       ],
-      "@cms-blog//cmslib-backend/migration": [
+      "@cms-blog/cmslib-backend/migration": [
         "libs/cmslib-backend/migration/src/index.ts"
       ],
-      "@cms-blog//cmslib-backend/model": [
+      "@cms-blog/cmslib-backend/model": [
         "libs/cmslib-backend/model/src/index.ts"
       ],
-      "@cms-blog//cmslib-backend/plugin": [
-        "libs/cmslib-backend/plugin/src/index.ts"
-      ],
-      "@cms-blog//cmslib-backend/routes": [
+      "@cms-blog/cmslib-backend/routes": [
         "libs/cmslib-backend/routes/src/index.ts"
       ],
       "@cms-blog/cmslib-frontend/data-access": [
