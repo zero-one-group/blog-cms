@@ -7,12 +7,21 @@ import {
 } from '@cms-blog/cmslib-frontend/data-access';
 import { Card } from '@cms-blog/cmslib-frontend/ui';
 import { useEffect, useState, useMemo } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 /* eslint-disable-next-line */
 export interface HomeProps {}
 
-export function Home(props: HomeProps) {
-  const [dashboardData, setDashboardData] = useState<DashboardData[]>();
+export type HandleCreateEditProps = {
+  mode: string;
+  project_id: number;
+  project_name: string;
+  descriptions: string;
+};
 
+export function Home(props: HomeProps) {
+  const [dashboardData, setDashboardData] = React.useState<DashboardData[]>();
+  const [formData, setFormData] = React.useState();
+  const history = useHistory();
   // TODO: Can use dynamic user_id
   const userId = 1;
   const URL = 'http://localhost:8080';
@@ -31,6 +40,28 @@ export function Home(props: HomeProps) {
         console.log(err);
       });
   }, []);
+
+  const handleOnClick = async (props: HandleCreateEditProps) => {
+    try {
+      const response = await axios.get(
+        `${URL}/form?&project_id=${props.project_id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      history.push('/content-management-form', {
+        mode: props.mode,
+        project_id: props.project_id,
+        project_name: props.project_name,
+        descriptions: props.descriptions,
+        form_data: response.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Stack>
@@ -51,7 +82,15 @@ export function Home(props: HomeProps) {
                       key={index}
                       title={data.project_name}
                       subtitle={data.descriptions}
-                      href="/content-management-form"
+                      // href="/content-management-form"
+                      onClick={() =>
+                        handleOnClick({
+                          mode: 'edit',
+                          project_id: +data.id,
+                          project_name: data.project_name,
+                          descriptions: data.descriptions,
+                        })
+                      }
                     />
                   );
                 })}
@@ -63,9 +102,17 @@ export function Home(props: HomeProps) {
                 <Card
                   title="Create New Project"
                   subtitle="+"
-                  href="/content-management-form"
+                  // href="/content-management-form"
                   bg="green.200"
                   boxShadow="xl"
+                  onClick={() =>
+                    handleOnClick({
+                      mode: 'create',
+                      project_id: 0,
+                      project_name: '',
+                      descriptions: '',
+                    })
+                  }
                 />
               </Grid>
             </>

@@ -29,7 +29,7 @@ export async function seed(knex: Knex): Promise<void> {
       id: 1,
       user_id: 1,
       project_name: 'Blog Pecinta Loli',
-      descriptions: 'blog tentang komunitas pecinta loli'
+      descriptions: 'blog tentang komunitas pecinta loli',
     },
   ]);
 
