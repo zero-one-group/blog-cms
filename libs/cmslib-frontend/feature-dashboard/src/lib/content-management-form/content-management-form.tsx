@@ -240,21 +240,25 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <HStack mx="9" mt="20" p="6">
-        <FormControl pr='10'>
+        <FormControl pr="10">
           <Heading as="h2" size="lg" mb="4">
             Project Name
           </Heading>
-          <Input {...register(`form_data.project_name`, {
-            required: 'Please fill the project name',
-          })}/>
+          <Input
+            {...register(`form_data.project_name`, {
+              required: 'Please fill the project name',
+            })}
+          />
         </FormControl>
-        <FormControl pl='10'>
+        <FormControl pl="10">
           <Heading as="h2" size="lg" mb="4">
             Project Descriptions
           </Heading>
-          <Input {...register(`form_data.descriptions`, {
-            required: 'Please fill the project name',
-          })}/>
+          <Input
+            {...register(`form_data.descriptions`, {
+              required: 'Please fill the project name',
+            })}
+          />
         </FormControl>
       </HStack>
       <Box m="9" p="9" boxShadow="lg" rounded="lg" bg="gray.100">

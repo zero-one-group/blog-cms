@@ -82,7 +82,8 @@ export function Home(props: HomeProps) {
                       key={index}
                       title={data.project_name}
                       subtitle={data.descriptions}
-                      // href="/content-management-form"
+                      isEdit={true}
+                      projectId={data.id}
                       onClick={() =>
                         handleOnClick({
                           mode: 'edit',
@@ -102,7 +103,6 @@ export function Home(props: HomeProps) {
                 <Card
                   title="Create New Project"
                   subtitle="+"
-                  // href="/content-management-form"
                   bg="green.200"
                   boxShadow="xl"
                   onClick={() =>

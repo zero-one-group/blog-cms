@@ -22,8 +22,7 @@ async function getByUserId(
 }
 
 async function deleteProject(projectId: number) {
-  // await FormModel.query().whereIn('project_id', projectId).del();
-  await ProjectModel.query().where('project_id', projectId).del();
+  await ProjectModel.query().where('id', projectId).del();
 }
 
 export const project: FastifyPluginAsync = async function (

@@ -1,4 +1,16 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Text,
+  CloseButton,
+  Spacer,
+  HStack,
+  useDisclosure,
+} from '@chakra-ui/react';
+import { AlertDialog } from '../alert-dialog/alert-dialog';
+import * as React from 'react';
+import { URL } from '@cms-blog/cmslib-frontend/data-access';
+import axios from 'axios';
 
 /* eslint-disable-next-line */
 export interface CardProps {
@@ -8,27 +20,75 @@ export interface CardProps {
   text?: string | null;
   href?: string;
   boxShadow?: string;
+  isEdit?: boolean;
+  projectId?: number;
   onClick?: () => void;
 }
 
 export function Card(props: CardProps) {
+  const [selectedId, setSelectedId] = React.useState<number | null>();
+  const {
+    isOpen: isOpenDelete,
+    onOpen: onOpenDelete,
+    onClose: onCloseDelete,
+  } = useDisclosure();
+
+  function handleDelete(id: number | undefined) {
+    setSelectedId(id);
+    onOpenDelete();
+  }
+
+  async function handleConfirmDelete() {
+    const id = Number(selectedId);
+    try {
+      await axios.delete(`${URL}/project/${props.projectId}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSelectedId(null);
+    }
+  }
   return (
-    <a onClick={props.onClick} href={props.href ? props.href : undefined}>
-      <Box
-        p="5"
-        boxShadow={props.boxShadow ? props.boxShadow : 'lg'}
-        rounded="lg"
-        bg={props.bg ? props.bg : 'white'}
+    <Box
+      pl="10"
+      pr="4"
+      py="6"
+      boxShadow={props.boxShadow ? props.boxShadow : 'lg'}
+      rounded="lg"
+      bg={props.bg ? props.bg : 'white'}
+    >
+      {props.isEdit ? (
+        <HStack h="2">
+          <Spacer />
+          <CloseButton onClick={() => handleDelete(props.projectId)} />
+        </HStack>
+      ) : (
+        ''
+      )}
+      <a
+        style={{ cursor: 'pointer' }}
+        onClick={props.onClick}
+        href={props.href ? props.href : undefined}
       >
-        <Heading as="h3" size="md" mb="5">
+        <Heading as="h3" size="md" mt="2" mb="5">
           {props.title}
         </Heading>
         <Heading as="h5" size="sm" mb="2">
           {props.subtitle}
         </Heading>
         <Text fontSize="sm">{props.text}</Text>
-      </Box>
-    </a>
+      </a>
+      <AlertDialog
+        isOpen={isOpenDelete}
+        variant="delete"
+        onClose={onCloseDelete}
+        onConfirm={handleConfirmDelete}
+      />
+    </Box>
   );
 }
 
