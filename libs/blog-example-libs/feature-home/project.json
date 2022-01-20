@@ -1,0 +1,25 @@
+{
+  "root": "libs/blog-example-libs/feature-home",
+  "sourceRoot": "libs/blog-example-libs/feature-home/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/blog-example-libs/feature-home/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/blog-example-libs/feature-home"],
+      "options": {
+        "jestConfig": "libs/blog-example-libs/feature-home/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

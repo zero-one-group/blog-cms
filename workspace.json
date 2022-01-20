@@ -8,6 +8,8 @@
     "-cmslib-backend-seeds": "libs/cmslib-backend/seeds",
     "blog-example": "apps/blog-example",
     "blog-example-e2e": "apps/blog-example-e2e",
+    "blog-example-libs-feature-home": "libs/blog-example-libs/feature-home",
+    "blog-example-libs-ui": "libs/blog-example-libs/ui",
     "cms-backend": "apps/cms-backend",
     "cms-frontend": "apps/cms-frontend",
     "cms-frontend-e2e": "apps/cms-frontend-e2e",
