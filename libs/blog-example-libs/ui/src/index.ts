@@ -1,1 +1,1 @@
-export * from './lib/blog-example-libs-ui';
+export * from './lib/navbar/navbar';
