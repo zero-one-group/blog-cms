@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx run-many --parallel --target=build --projects=cms-frontend,cms-backend",
+    "build": "nx run-many --parallel --target=build --projects=cms-frontend,cms-backend,blog-example",
     "test": "nx test",
-    "start:all": "nx run-many --parallel --target=serve --projects=cms-frontend,cms-backend",
+    "start:all": "nx run-many --parallel --target=serve --projects=cms-frontend,cms-backend,blog-example",
     "db": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' knex --knexfile=./knexfile.ts",
     "clean-build:api": "rimraf ./dist"
   },
