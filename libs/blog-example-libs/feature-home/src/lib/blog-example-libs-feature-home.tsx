@@ -18,7 +18,7 @@ export function BlogExampleLibsFeatureHome(
         minHeight="100vh"
       >
         <Navbar />
-        <Route path="/home" exact render={() => <Home />} />
+        <Route path="/" exact render={() => <Home />} />
       </Stack>
       <Stack
         bg={useColorModeValue('#636e72', 'inherit')}

@@ -30,6 +30,7 @@
     "fastify-static": "^4.2.3",
     "fastify-swagger": "^4.8.3",
     "framer-motion": "^4",
+    "hero-slider": "^2.0.3",
     "knex": "^0.21.17",
     "objection": "^3.0.0",
     "pg": "^8.7.1",

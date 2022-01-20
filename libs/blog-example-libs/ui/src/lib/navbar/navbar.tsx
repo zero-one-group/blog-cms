@@ -8,7 +8,7 @@ export interface NavbarProps {}
 export function Navbar(props: NavbarProps) {
   return (
     <Flex
-      bg="#fffff"
+      bg="white"
       position="fixed"
       w="100%"
       py="4"
