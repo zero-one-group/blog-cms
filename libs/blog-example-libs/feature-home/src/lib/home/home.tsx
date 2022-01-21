@@ -1,22 +1,17 @@
-import { Box, Stack, Heading, Grid } from '@chakra-ui/react';
+import {
+  Box,
+  Stack,
+  Heading,
+  Grid,
+  Button,
+  Spacer,
+  HStack,
+  Center,
+} from '@chakra-ui/react';
 import * as React from 'react';
 import axios from 'axios';
-import {
-  GetDashboardData,
-  DashboardData,
-} from '@cms-blog/cmslib-frontend/data-access';
-import { Card } from '@cms-blog/cmslib-frontend/ui';
-import { useEffect, useState, useMemo } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import Slider from '../../../../ui/src/lib/hero-slider/Slider';
-// JSX
-import HeroSlider, { Slide, MenuNav, OverlayContainer } from 'hero-slider';
-
-// Images
-const bogliasco = 'https://i.imgur.com/Gu5Cznz.jpg';
-const countyClare = 'https://i.imgur.com/idjXzVQ.jpg';
-const craterRock = 'https://i.imgur.com/8DYumaY.jpg';
-const giauPass = 'https://i.imgur.com/8IuucQZ.jpg';
+import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons';
+import styled from 'styled-components';
 /* eslint-disable-next-line */
 export interface HomeProps {}
 
@@ -27,11 +22,25 @@ export type HandleCreateEditProps = {
   descriptions: string;
 };
 
+type FormData = {
+  image_url: string;
+  header: string;
+  subheader: string;
+};
+
+type CMSDataType = {
+  user_id: number;
+  project_name: string;
+  descriptions: string;
+  hero: FormData[];
+  carousel: FormData[];
+  content: FormData[];
+};
+
 export function Home(props: HomeProps) {
-  const [CMSData, setCMSData] = React.useState<DashboardData[]>();
-  const [project, setProject] = React.useState<string>('');
+  const [CMSData, setCMSData] = React.useState<CMSDataType>();
+  const [heroIndex, setHeroIndex] = React.useState<number>(0);
   console.log(CMSData);
-  const history = useHistory();
   // TODO: Can use dynamic user_id
   const projectId = 1642990876;
   const URL = 'http://localhost:8080';
@@ -51,41 +60,85 @@ export function Home(props: HomeProps) {
       });
   }, []);
 
-  // const handleOnClick = async (props: HandleCreateEditProps) => {
-  //   if (props.mode === 'edit') {
-  //     try {
-  //       const response = await axios.get(
-  //         `${URL}/form?&project_id=${props.project_id}`,
-  //         {
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //           },
-  //         }
-  //       );
-  //       history.push('/content-management-form', {
-  //         mode: props.mode,
-  //         project_id: props.project_id,
-  //         project_name: props.project_name,
-  //         descriptions: props.descriptions,
-  //         form_data: response.data,
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   if (props.mode === 'create') {
-  //     history.push('/content-management-form', {
-  //       mode: props.mode,
-  //       project_id: props.project_id,
-  //       project_name: props.project_name,
-  //       descriptions: props.descriptions,
-  //       form_data: '',
-  //     });
-  //   }
+  const HeroWrapper = styled.div`
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(${CMSData?.hero[heroIndex].image_url});
+  `;
+
+  // console.log(heroLength, 'INI LENGTH')
+  const handleHeroNext = () => {
+    if (CMSData) {
+      // setHeroLength()
+      if (heroIndex < CMSData.hero.length - 1) {
+        setHeroIndex(heroIndex + 1);
+      } else {
+        return;
+      }
+    }
+  };
+
+  // console.log(heroLength, 'INI LENGTH')
+  const handleHeroBack = () => {
+    if (CMSData) {
+      // setHeroLength()
+      if (heroIndex > 0) {
+        setHeroIndex(heroIndex - 1);
+      } else {
+        return;
+      }
+    }
+  };
+
+  // // const [counter, setCounter] = useState(30);
+  // React.useEffect(
+  //   () => {
+  //     const id = setInterval(() => {
+  //       if(CMSData){
+  //       if (heroIndex < CMSData.hero.length - 1) {
+  //       setHeroIndex((count) => count + 1);
+  //       }
+  //       }
+  //     }, 1000);
+  //     return () => {
+  //       clearInterval(id);
+  //     };
+  //   },
+  //   [] // empty dependency array
+  // );
+
   return (
     <Stack>
-      AHAHA
-      {/* <Slider /> */}
+      <HeroWrapper>
+        {/* <img src={CMSData?.hero[0].image_url} alt="/" /> */}
+        <HStack mt="50vh">
+          <Button onClick={() => handleHeroBack()}>
+            <ArrowBackIcon w="5" h="5" />
+          </Button>
+          <Spacer />
+          <Stack>
+            <Center>
+              <Heading size="2xl" as="h4" textColor="white">
+                {CMSData?.hero[heroIndex].header}{' '}
+              </Heading>
+            </Center>
+            <Center>
+              <Heading size="md" textColor="white" as="h3">
+                {CMSData?.hero[heroIndex].header}
+              </Heading>
+            </Center>
+          </Stack>
+          <Spacer />
+          <Button onClick={() => handleHeroNext()}>
+            <ArrowForwardIcon w="5" h="5" />
+          </Button>
+        </HStack>
+      </HeroWrapper>
     </Stack>
   );
 }
