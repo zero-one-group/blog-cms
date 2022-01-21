@@ -1,0 +1,73 @@
+{
+  "root": "apps/blog-example",
+  "sourceRoot": "apps/blog-example/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/blog-example",
+        "index": "apps/blog-example/src/index.html",
+        "baseHref": "/",
+        "main": "apps/blog-example/src/main.tsx",
+        "polyfills": "apps/blog-example/src/polyfills.ts",
+        "tsConfig": "apps/blog-example/tsconfig.app.json",
+        "assets": [
+          "apps/blog-example/src/favicon.ico",
+          "apps/blog-example/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/blog-example/src/environments/environment.ts",
+              "with": "apps/blog-example/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "blog-example:build",
+        "hmr": true,
+        "port": 3000
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "blog-example:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/blog-example/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/blog-example"],
+      "options": {
+        "jestConfig": "apps/blog-example/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -18,6 +18,12 @@
       "@cms-blog//cmslib-backend/seeds": [
         "libs/cmslib-backend/seeds/src/index.ts"
       ],
+      "@cms-blog/blog-example-libs/feature-home": [
+        "libs/blog-example-libs/feature-home/src/index.ts"
+      ],
+      "@cms-blog/blog-example-libs/ui": [
+        "libs/blog-example-libs/ui/src/index.ts"
+      ],
       "@cms-blog/cmslib-backend/interface": [
         "libs/cmslib-backend/interface/src/index.ts"
       ],

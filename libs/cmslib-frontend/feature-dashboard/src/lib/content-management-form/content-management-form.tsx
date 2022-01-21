@@ -8,6 +8,7 @@ import {
   FormControl,
   Input,
   HStack,
+  Spacer,
 } from '@chakra-ui/react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { AddIcon } from '@chakra-ui/icons';
@@ -155,6 +156,11 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
     console.log(formData.form_data);
   };
 
+  const handleClick = () => {
+    const projectId = location.state.project_id;
+    return alert(`Project Id: ${projectId}`);
+  };
+
   // Form Component
   const Form = (props: FormProps) => {
     const { index, field, name } = props;
@@ -276,6 +282,23 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
           />
         </FormControl>
       </HStack>
+      {location.state.mode === 'edit' ? (
+        <Box textAlign="left" px="16">
+          <Spacer />
+          <Button
+            color="white"
+            boxShadow="lg"
+            _hover={{ bg: 'tealPrimary.hover' }}
+            bg="blue.400"
+            onClick={() => handleClick()}
+          >
+            Show Project ID
+          </Button>
+        </Box>
+      ) : (
+        ''
+      )}
+
       <Box m="9" p="9" boxShadow="lg" rounded="lg" bg="gray.100">
         <Heading as="h2" size="lg">
           Hero
