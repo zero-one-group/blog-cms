@@ -157,10 +157,8 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
   };
 
   const handleClick = () => {
-    // const textField = document.createElement('textarea');
-
-    const formDataUrl = `${URL}/form?&project_id=${location.state.project_id}`;
-    return alert(` ${formDataUrl}`);
+    const projectId = location.state.project_id;
+    return alert(`Project Id: ${projectId}`);
   };
 
   // Form Component
@@ -294,7 +292,7 @@ export function ContentManagementForm(props: ContentManagementFormProps) {
             bg="blue.400"
             onClick={() => handleClick()}
           >
-            Show Project Data Access Link
+            Show Project ID
           </Button>
         </Box>
       ) : (

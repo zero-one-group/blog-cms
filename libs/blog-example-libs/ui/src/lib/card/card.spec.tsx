@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import HeroSlider from './hero-slider';
+import Card from './card';
 
-describe('HeroSlider', () => {
+describe('Card', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<HeroSlider />);
+    const { baseElement } = render(<Card />);
     expect(baseElement).toBeTruthy();
   });
 });

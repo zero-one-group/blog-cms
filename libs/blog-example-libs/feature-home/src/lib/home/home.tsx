@@ -7,11 +7,13 @@ import {
   Spacer,
   HStack,
   Center,
+  Flex,
 } from '@chakra-ui/react';
 import * as React from 'react';
 import axios from 'axios';
 import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons';
 import styled from 'styled-components';
+import { Card } from '@cms-blog/blog-example-libs/ui';
 /* eslint-disable-next-line */
 export interface HomeProps {}
 
@@ -40,8 +42,8 @@ type CMSDataType = {
 export function Home(props: HomeProps) {
   const [CMSData, setCMSData] = React.useState<CMSDataType>();
   const [heroIndex, setHeroIndex] = React.useState<number>(0);
-  console.log(CMSData);
-  // TODO: Can use dynamic user_id
+
+  // This projectId is generated from CMS-Blog
   const projectId = 1642990876;
   const URL = 'http://localhost:8080';
 
@@ -69,6 +71,13 @@ export function Home(props: HomeProps) {
     background-size: cover;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(${CMSData?.hero[heroIndex].image_url});
+  `;
+
+  const CarouselWrapper = styled.div`
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+    padding: 3rem 10vh;
   `;
 
   // console.log(heroLength, 'INI LENGTH')
@@ -139,6 +148,29 @@ export function Home(props: HomeProps) {
           </Button>
         </HStack>
       </HeroWrapper>
+      <CarouselWrapper>
+        <Center>
+          <Heading size="lg">Kegiatan Komunitas</Heading>
+        </Center>
+        <Center>
+          <Flex alignContent="center">
+            {CMSData?.carousel.map((value, index) => {
+              return (
+                <>
+                  {/* <Spacer/> */}
+                  <Card
+                    key={index}
+                    image={value.image_url}
+                    title={value.header}
+                    text={value.subheader}
+                  />
+                  {/* <Spacer/> */}
+                </>
+              );
+            })}
+          </Flex>
+        </Center>
+      </CarouselWrapper>
     </Stack>
   );
 }
